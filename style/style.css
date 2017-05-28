@@ -1,3 +1,15 @@
 .form-group {
-	margin-top: 20px;
+	margin-top: 10px;
+}
+
+.menu {
+	margin-top: 10px;
+}
+
+.list-group-item {
+	cursor: pointer;
+}
+
+.list-group-item:hover {
+	background-color: #eee;
 }

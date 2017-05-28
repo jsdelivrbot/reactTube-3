@@ -1,14 +1,15 @@
 import React from 'react';
 
-const VideoPlayer = ({video}) => {
+const VideoPlayer = ({video, playerSize}) => {
     if(!video) {
         return <div>Loading...</div>;
     }
     const videoId = video.id.videoId;
     const url = `https://www.youtube.com/embed/${videoId}`;
+    const playerSizeClass = playerSize === 'small' ? 'col-xs-8' : 'col-xs-12';
 
     return (
-        <div className="col-xs-8">
+        <div className={playerSizeClass}>
             <div className="embed-responsive embed-responsive-16by9">
                 <iframe  src={url} />
             </div>

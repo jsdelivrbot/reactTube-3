@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
 import _ from 'lodash';
 
+import Menu from './components/menu';
 import SearchBar from './components/searchBar';
 import VideoList from './components/videoList';
 import VideoPlayer from './components/videoPlayer';
@@ -13,14 +14,19 @@ class App extends Component {
 
 		this.state = {
 			videos: [],
-			selectedVideo: null
+			selectedVideo: null,
+			playerSize: 'small'
 		}
 
 		this.videoSearch();
 	}
 
 	changeVideoPlayerSize() {
-
+		const playerSize = this.state.playerSize === 'small' ? 'large' : 'small';
+		console.log(this.state)
+		this.setState({ 
+			playerSize: playerSize
+		});
 	}
 
 	videoSearch(term) {
@@ -37,8 +43,9 @@ class App extends Component {
 
 		return (
 			<div>
+				<Menu onButtonClick={this.changeVideoPlayerSize.bind(this)} />
 				<SearchBar onSearchTermChange={videoSearch} />
-				<VideoPlayer video={this.state.selectedVideo} />
+				<VideoPlayer video={this.state.selectedVideo} playerSize={this.state.playerSize} />
 				{this.state.videoList ? (
 					<div className="col-xs-4">Loading...</div>
 				 ) :  (
