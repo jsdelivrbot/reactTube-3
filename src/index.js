@@ -23,7 +23,6 @@ class App extends Component {
 
 	changeVideoPlayerSize() {
 		const playerSize = this.state.playerSize === 'small' ? 'large' : 'small';
-		console.log(this.state)
 		this.setState({ 
 			playerSize: playerSize
 		});
@@ -51,7 +50,7 @@ class App extends Component {
 				 ) :  (
 					<VideoList 
 						onVideoSelect={selectedVideo => this.setState({selectedVideo})}
-						videos={this.state.videos} 
+						videos={this.state.videos}
 					/>
 				 )}
 			</div>
