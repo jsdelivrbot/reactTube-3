@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function getRelatedVideos(videoId) {
+export function getRelatedVideos(videoId, callback) {
 
 	var url = 'https://www.googleapis.com/youtube/v3/search';
 	var params = {
@@ -11,6 +11,6 @@ export function getRelatedVideos(videoId) {
 	};
 
 	axios.get(url, { params }).then(function (response) {
-		console.log(response.data.items);
+		callback(response.data.items);
 	});
 }

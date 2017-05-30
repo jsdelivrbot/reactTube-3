@@ -9,6 +9,7 @@ const VideoList = (props) => {
                 onVideoSelect={props.onVideoSelect}
                 key={video.etag} 
                 video={video} 
+                updateVideos={props.updateVideos}
             />
         )
     });

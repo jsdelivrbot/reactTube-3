@@ -2,12 +2,12 @@ import React from 'react';
 
 import { getRelatedVideos } from './YTapi';
 
-const VideoListItem = ({video, onVideoSelect}) => {
+const VideoListItem = ({video, onVideoSelect, updateVideos}) => {
     const imageUrl = video.snippet.thumbnails.default.url;
 
     function handleClick() {
         onVideoSelect(video);
-        getRelatedVideos(video.id.videoId);
+        getRelatedVideos(video.id.videoId, updateVideos);
     }
 
     return (
