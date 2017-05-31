@@ -14,3 +14,17 @@ export function getRelatedVideos(videoId, callback) {
 		callback(response.data.items);
 	});
 }
+
+export function getVideoDetails(videoId) {
+	var url = 'https://www.googleapis.com/youtube/v3/videos';
+	var params = {
+		key: config.API_KEY,
+		type: 'video',
+		part: 'statistics',
+		id: videoId
+	};
+
+	axios.get(url, { params }).then(function (response) {
+		console.log(response)
+	});
+}
