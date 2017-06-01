@@ -18,12 +18,12 @@ class App extends Component {
 			playerSize: 'small'
 		}
 
-		this.videoSearch();
+		this.videoSearch(null, true);
 	}
 
 	updateVideos(videos) {
 		this.setState({ 
-				videos: videos
+			videos: videos
 		});
 	}
 
@@ -34,12 +34,16 @@ class App extends Component {
 		});
 	}
 
-	videoSearch(term) {
+	videoSearch(term, changeMainVideo) {
 		YTSearch({key: config.API_KEY, term: term}, (videos) => {
 			this.setState({ 
-				videos: videos,
-				selectedVideo: videos[0]
+				videos: videos
 			});
+			if(changeMainVideo) {
+				this.setState({ 
+					selectedVideo: videos[0]
+				});
+			}
 		});
 	}
 
